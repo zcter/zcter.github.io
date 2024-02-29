@@ -10,6 +10,7 @@
     <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/img/20210715233345.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" href="favicon.ico">
     <style>
         html {
             height: 100%;
@@ -140,13 +141,24 @@
     </script>
     <script>
     
-    
-        setTimeout(function (){
+        let isFirstDown = true;
+ 
+        document.addEventListener('mousedown', function(event) {
+            if (isFirstDown) {
+                console.log("鼠标首次按下");
+                handleMouseDown();
+                document.removeEventListener('mousedown', arguments.callee); // 移除该事件监听器
+
+            }
+        });
+ 
+        function handleMouseDown() {
+            console.log("鼠标点击");
             console.log(1);
-            document.getElementById("music").play();
-            console.log(2);
-        },4000);
-    
+                    document.getElementById("music").play();
+                    console.log(2);
+        }
+
         var S = {
             init: function () {
                 S.Drawing.init('.canvas');
@@ -158,7 +170,6 @@
                 });
             }
         };
-
 
         S.Drawing = (function () {
             var canvas,
