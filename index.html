@@ -105,6 +105,9 @@
 </head>
 
 <body>
+    <audio id="music" autoplay="autoplay" loop="loop">
+        <source src="./bgMusic.mp3" type="audio/mpeg">
+    </audio>
     <div class="cs">
         <img src="images/lover.jpg" id="logo">
     </div>
@@ -136,6 +139,14 @@
         show_date_time();
     </script>
     <script>
+    
+    
+        setTimeout(function (){
+            console.log(1);
+            document.getElementById("music").play();
+            console.log(2);
+        },4000);
+    
         var S = {
             init: function () {
                 S.Drawing.init('.canvas');
